@@ -25,7 +25,7 @@ function Result() {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:8000/fortune/${category.toLowerCase()}/${type.toLowerCase()}?${type.toLowerCase()}=${value}`
+          `https://mbti-api-pp4g.onrender.com/fortune/${category.toLowerCase()}/${type.toLowerCase()}?${type.toLowerCase()}=${value}`
         );
         const data = await response.json();
         setFortune(data.fortune);
