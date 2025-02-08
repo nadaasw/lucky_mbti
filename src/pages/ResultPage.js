@@ -3,30 +3,39 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../App.css";
 
+const BASE_URL = "https://mbti-api-pp4g.onrender.com";  // 배포된 FastAPI 서버 URL
+
 function Result() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [fortune, setFortune] = useState(""); 
-  const [loading, setLoading] = useState(true); 
+  const [fortune, setFortune] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const { category, type, value } = location.state || {}; 
-  // 🔹 category: "today" or "yearly"
-  // 🔹 type: "mbti" or "birthday"
-  // 🔹 value: 실제 MBTI 값(EX: "ISTJ") 또는 생년월일(EX: "1995-07-20")
+  const { category, type, value } = location.state || {};
 
   useEffect(() => {
     if (!category || !type || !value) {
-      navigate("/"); // 데이터가 없으면 다시 입력 페이지로 이동
+      navigate("/"); // 데이터가 없으면 루트 페이지로 이동
       return;
     }
 
-    // ✅ API 요청 (백엔드에서 운세 가져오기)
     const fetchFortune = async () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://mbti-api-pp4g.onrender.com/fortune/${category.toLowerCase()}/${type.toLowerCase()}?${type.toLowerCase()}=${value}`
+          `${BASE_URL}/fortune/${category}/${type}?${type}=${value}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
         setFortune(data.fortune);
       } catch (error) {
@@ -54,7 +63,7 @@ function Result() {
       )}
 
       <button className="back-button" onClick={() => navigate("/")}>
-        다시 보기
+        처음으로
       </button>
     </div>
   );
