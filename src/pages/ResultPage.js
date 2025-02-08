@@ -23,7 +23,7 @@ function Result() {
       setLoading(true);
       try {
         const response = await fetch(
-          `${BASE_URL}/fortune/${category}/${type}?${type}=${value}`,
+          `${BASE_URL}/fortune/${category}/${type.toLowerCase()}?${type.toLowerCase()}=${value.toLowerCase()}`,
           {
             method: "GET",
             headers: {

@@ -5,7 +5,7 @@ export const getTodayFortuneByMBTI = async (mbti) => {
   console.log(`🚀 API 요청 실행됨: ${mbti}`);  // API 요청 실행 확인
 
   try {
-    const response = await fetch(`${BASE_URL}/fortune/today/mbti?mbti=${mbti}`, {
+    const response = await fetch(`${BASE_URL}/fortune/today/mbti?mbti=${mbti.toLowerCase()}`, {
       method: "GET",  // 백엔드에서 GET 요청을 받도록 설정했으면 GET 사용
       headers: {
         "Content-Type": "application/json",
