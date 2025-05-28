@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../App.css";
 
-const BASE_URL = "https://mbti-api-pp4g.onrender.com";  // 배포된 FastAPI 서버 URL
+const BASE_URL = "https://mbti-api-om3m.onrender.com";  // 배포된 FastAPI 서버 URL
 
 function Result() {
   const location = useLocation();
