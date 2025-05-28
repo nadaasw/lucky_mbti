@@ -1,4 +1,4 @@
-const BASE_URL = "https://mbti-api-pp4g.onrender.com";  // FastAPI 백엔드 URL
+const BASE_URL = "https://mbti-api-om3m.onrender.com";  // FastAPI 백엔드 URL
 
 // ✅ MBTI 기반 오늘의 운세 요청
 export const getTodayFortuneByMBTI = async (mbti) => {
