@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendPsychologyAnswers } from "../api"; 
+import "../App.css";  
 
 const questions = [
   {
@@ -129,7 +130,16 @@ function AdvancedTest() {
   };
 
   return (
+    
     <div className="test-container">
+        {/* 프로그레스 바 */}
+        <div className="progress-container">
+        <div
+            className="progress-bar"
+            style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+        ></div>
+        </div>
+    
       <h2>Q{currentQuestion + 1}. {questions[currentQuestion].question}</h2>
 
       <div className="options">
