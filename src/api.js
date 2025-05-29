@@ -55,7 +55,7 @@ export const sendPsychologyAnswers = async (answers) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ answers }),  // answers: [{question, answer}, ...]
+      body: JSON.stringify(answers),  // answers: [{question, answer}, ...]
     });
 
     if (!response.ok) {
