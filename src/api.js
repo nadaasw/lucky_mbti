@@ -47,3 +47,26 @@ export const getTodayFortuneByBirthday = async (birthday) => {
     return null;
   }
 };
+
+export const sendPsychologyAnswers = async (answers) => {
+  try {
+    const response = await fetch(`${BACKEND_URL}/psychology`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ answers }),  // answers: [{question, answer}, ...]
+    });
+
+    if (!response.ok) {
+      throw new Error(`서버 응답 실패: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("✅ 성격 분석 결과:", data);
+    return data;
+  } catch (error) {
+    console.error("🚨 성격 분석 API 요청 실패:", error);
+    return null;
+  }
+};

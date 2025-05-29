@@ -16,6 +16,7 @@ function CategoryButtons() {
     <div className="fortune-buttons">
       <button onClick={() => handleNavigation("/daily")}>오늘의 운세 보기</button>
       <button onClick={() => handleNavigation("/yearly")}>올해의 운세 보기</button>
+      <button onClick={() => navigate("/advanced-test")}>나에게 맞는 캐릭터 찾기</button>
     </div>
   );
 }
