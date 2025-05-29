@@ -5,7 +5,7 @@ import "../App.css";
 function AdvancedResult() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { result } = location.state || {}; // 전달받은 결과
+  const { result } = location.state || {};
 
   const [character, setCharacter] = useState("");
   const [summary, setSummary] = useState("");
@@ -22,24 +22,28 @@ function AdvancedResult() {
   }, [result]);
 
   return (
-    <div className="result-page">
-      <h1>🧠 성격 테스트 결과</h1>
+    <div className="result-wrapper">
+      <h1 className="result-title">🧠 성격 테스트 결과</h1>
 
-      {/* 이미지 보여주기 */}
       <img
-        src={`/images/${character}.png`} // public/images/리락쿠마.png 있을 경우
+        src={`/images/lilakuma.png`}
         alt={character}
-        style={{ width: "200px", marginBottom: "10px" }}
+        className="character-img"
       />
 
-      <h2>당신과 닮은 캐릭터: "{character}"</h2>
-      <p><strong>예상되는 MBTI 유형:</strong> {mbtiGuess}</p>
-      <p>🎧 어울리는 아티스트: {music}</p>
-      <p style={{ marginTop: "20px", lineHeight: "1.5" }}>{summary}</p>
+      <h2 className="character-name">당신과 닮은 캐릭터: "{character}"</h2>
 
-      <button onClick={() => navigate("/")}>홈으로 돌아가기</button>
+      <div className="result-description">
+        <p><strong>예상되는 MBTI 유형:</strong> {mbtiGuess}</p>
+        <p><strong>🎧 어울리는 아티스트:</strong> {music}</p>
+        <p className="summary-text">{summary}</p>
+      </div>
+
+      <button className="return-button" onClick={() => navigate("/")}>
+        ⬅️ 홈으로 돌아가기
+      </button>
     </div>
   );
 }
 
-export default AdvancedResult; // ✅ 이 줄이 꼭 필요함!
+export default AdvancedResult;
