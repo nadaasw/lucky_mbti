@@ -41,3 +41,5 @@ function AdvancedResult() {
     </div>
   );
 }
+
+export default AdvancedResult; // ✅ 이 줄이 꼭 필요함!
