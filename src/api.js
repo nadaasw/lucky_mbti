@@ -50,7 +50,7 @@ export const getTodayFortuneByBirthday = async (birthday) => {
 
 export const sendPsychologyAnswers = async (answers) => {
   try {
-    const response = await fetch(`${BASE_URL}/psychology`, {
+    const response = await fetch(`${BASE_URL}/psychology/fixed`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

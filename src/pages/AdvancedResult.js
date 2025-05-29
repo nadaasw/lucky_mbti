@@ -1,33 +1,37 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import "../App.css";
 
-function AdvanceResult() {
-  const { state } = useLocation();
+function AdvancedResult() {
+  const location = useLocation();
+  const { character, summary, mbtiGuess, recommand_music } = location.state || {};
   const navigate = useNavigate();
-  const result = state?.result;
-
-  if (!result) {
-    return <p>결과가 없습니다. 다시 시도해주세요.</p>;
-  }
 
   return (
-    <div className="result-page">
-      <Header />
-      <h1>🔍 당신의 성향 분석 결과</h1>
-      <p className="result-description">{result.description}</p>
+    <div className="result-container">
+      <h1 className="result-title">🧠 성격 테스트 결과</h1>
 
-      {result.character && (
-        <div className="character-result">
-          <h2>🎭 어울리는 캐릭터: {result.character}</h2>
-          {result.imageUrl && (
-            <img src={result.imageUrl} alt="캐릭터 이미지" style={{ width: "200px" }} />
-          )}
-        </div>
-      )}
+      {/* 캐릭터 이미지 */}
+      <img
+        src={`/public/images/lilakuma.png`} // 예: /images/리락쿠마.png
+        alt="리락쿠마"
+        className="result-character-image"
+      />
 
-      <button onClick={() => navigate("/")}>처음으로</button>
+      {/* 캐릭터 이름 */}
+      <h2 className="result-character-name">당신과 닮은 캐릭터: "리락쿠마"</h2>
+
+      {/* 성격 요약 */}
+      <p className="result-summary">{summary}</p>
+
+      {/* 추정된 MBTI */}
+      <p className="result-mbti">예상되는 MBTI 유형: <strong>{mbtiGuess}</strong></p>
+
+      {/* 음악 추천 */}
+      <p className="result-music">🎧 어울리는 아티스트: <em>{recommand_music}</em></p>
+
+      <button onClick={() => navigate("/")}>홈으로 돌아가기</button>
     </div>
   );
 }
 
-export default AdvanceResult;
+export default AdvancedResult;
